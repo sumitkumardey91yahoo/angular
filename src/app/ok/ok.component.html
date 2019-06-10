@@ -1,0 +1,22 @@
+<div style = "text-align:center">
+   <h1>
+      Welcome to {{title}}.
+   </h1>
+</div>
+<hr>
+<div> Months :
+   <select (change)="mySelect($event)">
+      <option *ngFor = "let i of months" [value]="i" >{{i}}</option>
+   </select>
+   <p>i am seleted {{month}} </p>
+</div>
+<hr>
+
+<button (click)="myClickFunction($event)">
+   Click Me
+</button>
+<hr>
+
+
+Name: <input (keyup)="getUserIdsFirstWay($event)">
+<p>You entered: {{name}}</p>
