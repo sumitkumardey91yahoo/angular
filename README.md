@@ -1,27 +1,107 @@
 # ProjectTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+ git clone origin https://github.com/sumitkumardey91yahoo/angular.git
 
-## Development server
+ cd angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ npm install
 
-## Code scaffolding
+ # create new Project
+ npm install -g @angular/cli
+ ng new project-test
+ cd project-test
+ ng serve
+# Run
+ng serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# module create
+ng generate component ok
 
-## Build
+# router
+src/app/app-routing.module.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+import { NewComponent } from './new/new.component';
+import { OkComponent } from './ok/ok.component'
+const routes: Routes = [
+      {
+          path: 'new',
+          component: NewComponent
+      },
+      {
+         path: 'ok',
+         component: OkComponent
+       }
+];
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# sample code
 
-## Running end-to-end tests
+   # ok.component.html
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+<div style = "text-align:center">
+   <h1>
+      Welcome to {{title}}.
+   </h1>
+</div>
+<hr>
+<div> Months :
+   <select (change)="mySelect($event)">
+      <option *ngFor = "let i of months" [value]="i" >{{i}}</option>
+   </select>
+   <p>i am seleted {{month}} </p>
+</div>
+<hr>
 
-## Further help
+<button (click)="myClickFunction($event)">
+   Click Me
+</button>
+<hr>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Name: <input (keyup)="getUserIdsFirstWay($event)">
+<p>You entered: {{name}}</p>
+
+
+
+#ok.component.ts
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ok',
+  templateUrl: './ok.component.html',
+  styleUrls: ['./ok.component.css']
+})
+export class OkComponent implements OnInit {
+
+  title = 'Angular 4 Project!';
+  month = "";
+  //array of months.
+  months = ["January", "February", "March", "April",
+           "May", "June", "July", "August", "September",
+           "October", "November", "December"];
+  isavailable = true;   //variable is set to true
+
+  myClickFunction(event) {
+    //just added console.log which will display the event details in browser on click of the button.
+    alert("Button is clicked");
+    console.log(event);
+ }
+ getUserIdsFirstWay(e) {
+   this.title = e.target.value;
+   console.log(e.target.value)
+ }
+ mySelect(e) {
+   console.log(e.target.value)
+   this.month = e.target.value;
+ }
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+  }
+
+}

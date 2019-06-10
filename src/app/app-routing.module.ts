@@ -4,14 +4,14 @@ import { NewComponent } from './new/new.component';
 import { OkComponent } from './ok/ok.component'
 const routes: Routes = [
       {
-            path: 'new',
-            component: NewComponent
-         },
-         {
+          path: 'new',
+          component: NewComponent
+      },
+      {
          path: 'ok',
          component: OkComponent
        }
-       ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
